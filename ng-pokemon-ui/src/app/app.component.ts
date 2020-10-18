@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { POKEMONS_MOCK } from './mock-data/pokemon.mock';
+import { Pokemon } from './models/pokemon.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,9 @@ import { POKEMONS_MOCK } from './mock-data/pokemon.mock';
 })
 export class AppComponent {
   POKEMONS = POKEMONS_MOCK;
+  selectedPokemon = null;
+
+  pokemonClicked(pokemon: Pokemon): void {
+    this.selectedPokemon = pokemon;
+  }
 }
