@@ -42,4 +42,12 @@ describe('PokemonService', () => {
       expect(service.selectedPokemon).toEqual(fakePokemon);
     });
   });
+
+  describe('getPokemonById', () => {
+    it('should get the pokemon', () => {
+      service.getPokemonById(POKEMONS_MOCK[1].id).subscribe((pokemon) => {
+        expect(pokemon).toEqual(POKEMONS_MOCK[1]);
+      });
+    });
+  });
 });

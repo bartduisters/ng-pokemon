@@ -1,4 +1,5 @@
 <app-pokemon-list
+  *ngIf="!selectedPokemon"
   [pokemons]="POKEMONS"
   (pokemonClick)="pokemonClicked($event)"
 ></app-pokemon-list>
