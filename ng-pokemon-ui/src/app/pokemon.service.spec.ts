@@ -17,14 +17,18 @@ describe('PokemonService', () => {
 
   describe('getPokemon', () => {
     it('should return all pokemon', () => {
-      expect(service.getPokemon()).toEqual(POKEMONS_MOCK);
+      service.getPokemon().subscribe((value) => {
+        expect(value).toEqual(POKEMONS_MOCK);
+      });
     });
   });
 
   describe('getSelectedPokemon', () => {
     it('should return the selected pokemon', () => {
       service.selectedPokemon = POKEMONS_MOCK[1];
-      expect(service.getSelectedPokemon()).toEqual(service.selectedPokemon);
+      service.getSelectedPokemon().subscribe((value) => {
+        expect(value).toEqual(service.selectedPokemon);
+      });
     });
   });
 
@@ -35,7 +39,7 @@ describe('PokemonService', () => {
         name: 'Fake Pokemon',
       } as Pokemon;
       service.setSelectedPokemon(fakePokemon);
-      expect(service.setSelectedPokemon).toEqual(fakePokemon);
+      expect(service.selectedPokemon).toEqual(fakePokemon);
     });
   });
 });

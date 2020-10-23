@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 import { POKEMONS_MOCK } from '../mock-data/pokemon.mock';
 import { PokemonService } from '../pokemon.service';
 import { PokemonContainerComponent } from './pokemon-container.component';
@@ -33,7 +34,7 @@ describe('PokemonContainerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonContainerComponent);
     component = fixture.componentInstance;
-    pokemonServiceSpy.getPokemon.and.returnValue(POKEMONS_MOCK);
+    pokemonServiceSpy.getPokemon.and.returnValue(of(POKEMONS_MOCK));
     component.ngOnInit();
     fixture.detectChanges();
   });
@@ -94,7 +95,7 @@ describe('PokemonContainerComponent', () => {
           By.css('app-pokemon-list')
         );
 
-        pokemonServiceSpy.getSelectedPokemon.and.returnValue(stubPokemon);
+        pokemonServiceSpy.getSelectedPokemon.and.returnValue(of(stubPokemon));
         pokemonListEl.triggerEventHandler('pokemonClick', stubPokemon);
         fixture.detectChanges();
         expect(pokemonServiceSpy.setSelectedPokemon).toHaveBeenCalled();

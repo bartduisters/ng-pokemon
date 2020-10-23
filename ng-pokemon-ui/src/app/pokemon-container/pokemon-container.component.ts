@@ -9,16 +9,20 @@ import { PokemonService } from '../pokemon.service';
 })
 export class PokemonContainerComponent implements OnInit {
   POKEMONS: Array<Pokemon>;
-  selectedPokemon = null;
+  selectedPokemon: Pokemon = null;
 
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this.POKEMONS = this.pokemonService.getPokemon();
+    this.pokemonService
+      .getPokemon()
+      .subscribe((value) => (this.POKEMONS = value));
   }
 
   pokemonClicked(pokemon: Pokemon): void {
     this.pokemonService.setSelectedPokemon(pokemon);
-    this.selectedPokemon = this.pokemonService.getSelectedPokemon();
+    this.pokemonService
+      .getSelectedPokemon()
+      .subscribe((value) => (this.selectedPokemon = value));
   }
 }

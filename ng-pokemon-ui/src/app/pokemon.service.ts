@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { POKEMONS_MOCK } from './mock-data/pokemon.mock';
 import { Pokemon } from './models/pokemon.interface';
 
@@ -10,12 +11,12 @@ export class PokemonService {
 
   constructor() {}
 
-  getPokemon(): Array<Pokemon> {
-    return POKEMONS_MOCK;
+  getPokemon(): Observable<Array<Pokemon>> {
+    return of(POKEMONS_MOCK);
   }
 
-  getSelectedPokemon(): Pokemon {
-    return this.selectedPokemon;
+  getSelectedPokemon(): Observable<Pokemon> {
+    return of(this.selectedPokemon);
   }
   setSelectedPokemon(pokemon: Pokemon): void {
     this.selectedPokemon = pokemon;
