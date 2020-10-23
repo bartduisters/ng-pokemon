@@ -15,6 +15,11 @@ export class PokemonService {
     return of(POKEMONS_MOCK);
   }
 
+  getPokemonById(id: number): Observable<Pokemon> {
+    const pokemon = POKEMONS_MOCK.find((p) => p.id === id);
+    return of(pokemon);
+  }
+
   getSelectedPokemon(): Observable<Pokemon> {
     return of(this.selectedPokemon);
   }
